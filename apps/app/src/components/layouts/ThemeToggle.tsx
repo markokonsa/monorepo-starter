@@ -1,7 +1,8 @@
 'use client';
 
+import { useTheme } from 'next-themes';
 import * as React from 'react';
-import type { FC } from 'react';
+
 import {
   Button,
   DropdownMenu,
@@ -10,9 +11,8 @@ import {
   DropdownMenuTrigger,
   Icons,
 } from 'ui';
-import { useTheme } from 'next-themes';
 export const ThemeToggle = () => {
-
+  const { setTheme } = useTheme();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

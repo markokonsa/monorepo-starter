@@ -1,15 +1,15 @@
-import type { DefaultValues, FieldValues } from 'react-hook-form';
+import type { DefaultValues, FieldValues, Resolver } from 'react-hook-form';
 import { FormProvider, useForm } from 'react-hook-form';
-import type { Schema } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { ReactNode } from 'react';
+import { ZodType } from 'zod';
 
 export type AppFormProps<T extends FieldValues> = {
   onSubmit: (input: T) => void;
   shouldUnregister?: boolean;
   defaultValues?: DefaultValues<T>;
   children: ReactNode;
-  schema: Schema<T>;
+  schema: ZodType<T>;
 };
 
 export function AppForm<T extends FieldValues>({
@@ -23,7 +23,7 @@ export function AppForm<T extends FieldValues>({
     mode: 'onChange',
     shouldUseNativeValidation: false,
     defaultValues,
-    resolver: zodResolver(schema),
+    resolver: zodResolver(schema as ZodType<T, FieldValues>) as Resolver<T>,
     shouldUnregister,
     delayError: 2000,
   });

@@ -3,6 +3,9 @@ const { fontFamily } = require('tailwindcss/defaultTheme');
 
 module.exports = {
   darkMode: ['class'],
+  corePlugins: {
+    preflight: true,
+  },
   theme: {
     container: {
       center: true,
@@ -68,6 +71,8 @@ module.exports = {
         oswald: ['Oswald', ...fontFamily.sans],
         sans: ['var(--font-sans)', ...fontFamily.sans],
         heading: ['var(--font-heading)', ...fontFamily.sans],
+        editorial: ['editorial', ...fontFamily.serif],
+        grotesk: ['grotesk', ...fontFamily.sans],
       },
       keyframes: {
         'accordion-down': {
